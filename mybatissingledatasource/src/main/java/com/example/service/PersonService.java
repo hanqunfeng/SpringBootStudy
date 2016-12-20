@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * ${DESCRIPTION}
  * Created by hanqunfeng on 2016/12/19 15:42.
@@ -26,4 +28,6 @@ public class PersonService {
     public Person selectByPrimaryKey(Integer pId){
         return personMapper.selectByPrimaryKey(pId);
     }
+
+
 }
