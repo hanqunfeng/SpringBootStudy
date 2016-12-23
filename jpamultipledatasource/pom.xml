@@ -46,11 +46,7 @@
 			<version>4.0.4</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.atomikos</groupId>
-			<artifactId>transactions-hibernate3</artifactId>
-			<version>4.0.4</version>
-		</dependency>
+
 
 		<dependency>
 			<groupId>javax.transaction</groupId>
