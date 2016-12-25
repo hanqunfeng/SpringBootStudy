@@ -15,7 +15,6 @@ import java.util.List;
  * Created by hanqunfeng on 2016/12/21 16:48.
  */
 
-//@NoRepositoryBean
 public interface PersonRepository extends BaseJpaRepository<Person, Integer> {
 
 
