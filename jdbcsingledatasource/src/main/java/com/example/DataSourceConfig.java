@@ -1,11 +1,12 @@
 package com.example;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -31,15 +32,19 @@ public class DataSourceConfig {
 
 
     @Bean(name = "dataSource")
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
 
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(driverClass);
-        dataSource.setUrl(url);
-        dataSource.setUsername(userName);
-        dataSource.setPassword(passWord);
-        return dataSource;
+        //DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        //dataSource.setDriverClassName(driverClass);
+        //dataSource.setUrl(url);
+        //dataSource.setUsername(userName);
+        //dataSource.setPassword(passWord);
+        //return dataSource;
+        return DataSourceBuilder.create().build();
     }
+
+
 
     @Bean(name = "jdbcTemplate")
     public JdbcTemplate jdbcTemplate(){
