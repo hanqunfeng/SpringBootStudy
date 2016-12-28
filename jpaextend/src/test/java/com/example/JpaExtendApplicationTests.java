@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.dao.PersonRepository;
 import com.example.model.Person;
+import com.example.utils.SimpleSpecificationBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -177,5 +178,40 @@ public class JpaExtendApplicationTests {
 		}
 	}
 
+	@Test
+	public void getListBySql(){
+		String sql = "select p_name , count(*) from person group by p_name";
+
+		List<Object[]> list = personRepository.listBySQL(sql);
+		for(Object[] object:list){
+			System.out.println(object[0] + "##" +object[1]);
+		}
+	}
+
+	@Test
+	public void getListByHql(){
+		String hql = "select pName , count(*) from Person group by pName";
+
+		List<Object[]> list = personRepository.listByHQL(hql);
+		for(Object[] object:list){
+			System.out.println(object[0] + "##" +object[1]);
+		}
+	}
+
+	@Test
+	public void FindByDIY(){
+		/**
+		 * 这里的查询表示age大于20或者name中包含『五』
+		 * 现在我们发现在SimpleSpecificationBuilder的add或者addOr方法中返回this的好处了
+		 */
+		List<Person> list = personRepository.findAll(
+				new SimpleSpecificationBuilder("pAge",">",20)
+						.addOr("pName",":","五")
+						.generateSpecification());
+
+		for(Person person : list){
+			System.out.println(person);
+		}
+	}
 
 }

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * ${DESCRIPTION}
@@ -28,5 +29,15 @@ public class BaseJpaRepositoryImpl<T, ID extends Serializable> extends SimpleJpa
     @Override
     public Page<T> findByAuto(T example, Pageable pageable) {
         return findAll(BaseSpecs.byAuto(entityManager,example),pageable);
+    }
+
+    @Override
+    public List<Object[]> listBySQL(String sql) {
+        return entityManager.createNativeQuery(sql).getResultList();
+    }
+
+    @Override
+    public List<Object[]> listByHQL(String hql) {
+        return entityManager.createQuery(hql).getResultList();
     }
 }
