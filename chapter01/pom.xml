@@ -20,7 +20,7 @@
 
   <dependencies>
 
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+    <!-- springframework 必须引入 -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
@@ -30,6 +30,21 @@
 
 
 
+    <!-- logback -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+
+
+
+    <!-- 如果需要spring test则引入 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>5.2.4.RELEASE</version>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>
@@ -37,6 +52,7 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
   <build>
